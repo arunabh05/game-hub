@@ -9,7 +9,7 @@ interface Response<T> {
 
 const useData = <T>(endpoint: string) => {
   const [data, setData] = useState<T[]>([]);
-  const [error, setError] = useState([]);
+  const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -30,6 +30,7 @@ const useData = <T>(endpoint: string) => {
     return () => controller.abort();
   }, []);
 
+  console.log(error);
   return { data, error, isLoading };
 };
 
